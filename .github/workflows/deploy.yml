@@ -29,10 +29,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        id: deploy
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
-          token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: a916d54ca2adb53f49c3a201ac3fa8bc
-          projectName: usa-pureflow
-          directory: dist
+          command: pages deploy dist --project-name usa-pureflow
